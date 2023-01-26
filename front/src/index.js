@@ -5,11 +5,12 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Home from './Pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Lists from './Pages/Lists';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Home/>
+    <Lists/>
   </React.StrictMode>
 );
 
