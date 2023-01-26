@@ -7,11 +7,12 @@ import Home from './Pages/Home';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Lists from './Pages/Lists';
 import MTC from './Pages/MTC';
+import Bbw from './Pages/Bootstrap-Bootcamp-Website/Bbw';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <MTC/>
+    <Bbw/>
   </React.StrictMode>
 );
 
