@@ -45,7 +45,6 @@ function Lists() {
             <div className='container m-2 mt-4 text-center'>
                 <ul className='m-2 mt-4 list-group'>{speakerListItems}</ul>
             </div>
-            
         </div>
     )
 }
