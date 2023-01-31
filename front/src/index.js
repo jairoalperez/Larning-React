@@ -9,11 +9,12 @@ import Lists from './Pages/Lists';
 import MTC from './Pages/MTC';
 import Bbw from './Pages/Bootstrap-Bootcamp-Website/Bbw';
 import Fetch from './Pages/Fetch';
+import Login from './Pages/Registration/Login';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Fetch/>
+    <Login/>
   </React.StrictMode>
 );
 
