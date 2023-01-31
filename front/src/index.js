@@ -10,11 +10,12 @@ import MTC from './Pages/MTC';
 import Bbw from './Pages/Bootstrap-Bootcamp-Website/Bbw';
 import Fetch from './Pages/Fetch';
 import Login from './Pages/Registration/Login';
+import Axios from './Pages/Axios';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Login/>
+    <Bbw/>
   </React.StrictMode>
 );
 

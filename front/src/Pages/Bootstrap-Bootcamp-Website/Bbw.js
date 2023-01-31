@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from './components/Nav'
 import Showcase from './components/Showcase'
 import Newsletter from './components/Newsletter'
@@ -12,9 +12,37 @@ import './style.css'
 
 
 function Bbw() {
+
+  const [menuItems, setMenuItems] = useState()
+
+  useEffect(() => {
+
+    async function getMenus() {
+        try {
+            const response = await fetch("http://localhost:8080/uisettings/menus")
+            let json = response.json()
+            json
+                .then(data => {
+                    setMenuItems(data)
+                    console.log("All Data ", menuItems)
+                })
+        } catch (error) {
+            setMenuItems([
+                { text: "Home", href: "/" },
+                { text: "Contact", href: "/contact" },
+                { text: "Abou Us", href: "/about" },
+                { text: "Bootcamps", href: "/bootcamps" },
+            ])
+        }
+    }
+    getMenus()
+
+}, []) 
+
+
   return (
     <div>
-        <Nav/>
+        <Nav items={menuItems}/>
         <Showcase/>
         <Newsletter/>
         <Boxes/>

@@ -1,7 +1,7 @@
 import React from 'react'
-import '../style.css' 
+import '../style.css'
 
-function Nav() {
+function Nav(props) {
     return (
         <nav className="navbar navbar-expand-lg bg-dark navbar-dark py-3 fixed-top">
             <div className="container">
@@ -18,15 +18,12 @@ function Nav() {
 
                 <div className="collapse navbar-collapse" id="navmenu">
                     <ul className="navbar-nav ms-auto">
-                        <li className="nav-item">
-                            <a href="#learn" className="nav-link">What You'll Learn</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#questions" className="nav-link">Questions</a>
-                        </li>
-                        <li className="nav-item">
-                            <a href="#instructors" className="nav-link">Instructors</a>
-                        </li>
+                        {
+                            props.items.map((item, index) => {
+                                return <li className="nav-item">
+                                    <a href={item.href} className="nav-link">{item.text}</a>
+                                </li>
+                            })}
                     </ul>
                 </div>
             </div>
