@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
@@ -11,11 +11,95 @@ import Bbw from './Pages/Bootstrap-Bootcamp-Website/Bbw';
 import Fetch from './Pages/Fetch';
 import Login from './Pages/Registration/Login';
 import Axios from './Pages/Axios';
+import Nav from './Pages/Bootstrap-Bootcamp-Website/components/Nav';
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Route,
+  Link
+} from "react-router-dom"
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <>
+      <Bbw></Bbw>
+      <Link to="/"></Link>
+      </>
+    )
+  },
+  {
+    path: "/login",
+    element: (
+      <>
+      <Login></Login>
+      <Link to="/login"></Link>
+      </>
+    )
+  },
+  {
+    path: "/axios",
+    element: (
+      <>
+      <Axios></Axios>
+      <Link to="/axios"></Link>
+      </>
+    )
+  },
+  {
+    path: "/fetch",
+    element: (
+      <>
+      <Fetch></Fetch>
+      <Link to="/fetch"></Link>
+      </>
+    )
+  },
+  {
+    path: "/clicker",
+    element: (
+      <>
+      <Home></Home>
+      <Link to="/clicker"></Link>
+      </>
+    )
+  },
+  {
+    path: "/lists",
+    element: (
+      <>
+      <Lists></Lists>
+      <Link to="/lists"></Link>
+      </>
+    )
+  },
+  {
+    path: "/mtc",
+    element: (
+      <>
+      <MTC></MTC>
+      <Link to="/mtc"></Link>
+      </>
+    )
+  }
+])
+
+const menuItems = [
+  { id: "1", text: "Home", href: "/" },
+  { id: "2", text: "Login", href: "/login" },
+  { id: "3", text: "Axios", href: "/axios" },
+  { id: "4", text: "Fetch", href: "/fetch" },
+  { id: "5", text: "Clicker", href: "/clicker" },
+  { id: "6", text: "Lists", href: "/lists" },
+  { id: "7", text: "MTC", href: "/mtc" },
+]
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Bbw/>
+    <Nav items={menuItems}/>
+    <RouterProvider router={router}> </RouterProvider>
   </React.StrictMode>
 );
 

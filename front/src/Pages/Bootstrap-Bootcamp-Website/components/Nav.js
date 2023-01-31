@@ -18,9 +18,9 @@ function Nav(props) {
 
                 <div className="collapse navbar-collapse" id="navmenu">
                     <ul className="navbar-nav ms-auto">
-                        {
-                            props.items.map((item, index) => {
-                                return <li className="nav-item">
+                        
+                            {props.items.map((item, index) => {
+                                return <li className="nav-item" key={item.id}>
                                     <a href={item.href} className="nav-link">{item.text}</a>
                                 </li>
                             })}

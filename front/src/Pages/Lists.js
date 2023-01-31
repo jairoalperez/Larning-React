@@ -35,7 +35,7 @@ function Lists() {
     )
 
     return (
-        <div className='container'>
+        <div className='container mt-5'>
             <div className='container m-2 mt-5 border rounded text-center'>
                 <button className='btn btn-primary m-3 p-2' onClick={onSortDescendClicked}>Sort Down List</button>
                 <button className='btn btn-primary m-3 p-2' onClick={onSortAscendClicked}>Sort Up List</button>

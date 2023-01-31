@@ -32,7 +32,7 @@ function MTC() {
     }
 
     return (
-        <div>
+        <div className='mt-5 m-5'>
             <input type='text' ref={inputRef}/>
             
             <button id="login" onClick={e => onClick(e)}>Login</button>
