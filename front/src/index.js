@@ -11,6 +11,7 @@ import Bbw from './Pages/Bootstrap-Bootcamp-Website/Bbw';
 import Fetch from './Pages/Fetch';
 import Login from './Pages/Registration/Login';
 import Axios from './Pages/Axios';
+import Register from './Pages/Registration/Register';
 import Nav from './Pages/Bootstrap-Bootcamp-Website/components/Nav';
 import {
   createBrowserRouter,
@@ -35,6 +36,15 @@ const router = createBrowserRouter([
       <>
       <Login></Login>
       <Link to="/login"></Link>
+      </>
+    )
+  },
+  {
+    path: "/register",
+    element: (
+      <>
+      <Register></Register>
+      <Link to="/register"></Link>
       </>
     )
   },
@@ -88,6 +98,7 @@ const router = createBrowserRouter([
 const menuItems = [
   { id: "1", text: "Home", href: "/" },
   { id: "2", text: "Login", href: "/login" },
+  { id: "8", text: "Register", href: "/register" },
   { id: "3", text: "Axios", href: "/axios" },
   { id: "4", text: "Fetch", href: "/fetch" },
   { id: "5", text: "Clicker", href: "/clicker" },
