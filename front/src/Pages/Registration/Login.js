@@ -28,7 +28,7 @@ function Login() {
 
           var config = {
             method: 'post',
-            url: 'http://localhost:8080/api/auth',
+            url: 'http://localhost:8080/apiauth/authenticate',
             mode: "no-cors",
             headers: { 
               'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ function Login() {
 
           axios(config)
           .then(function (response) {
-            console.log(JSON.stringify(response.data));
+            console.log(response.data);
           })
           .catch(function (error) {
             console.log(error);
