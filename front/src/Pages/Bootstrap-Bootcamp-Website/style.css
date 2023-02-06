@@ -15,3 +15,36 @@ body::before {
       width: 50%;
     }
   }
+
+.Login-wrapp {
+    margin-top: 0;
+}
+
+
+.Login-button {
+  border: 1px solid rgba(0, 55, 255, 0.898);
+  font-weight: 700;
+  border-radius: 6px;
+  height: auto;
+  display: block;
+  font-size: 16px;
+  padding: 6px 15px!important;
+  color: #000;
+  cursor: pointer;
+}
+
+
+.ico-us{
+
+  color: #fff!important;
+  margin-right: 6px;
+border-radius: 50px;
+    min-width: 16px;
+    display: inline-block;
+    vertical-align: middle;
+    position: relative;
+    left: -5px;
+    width: 30px;
+    line-height: 30px;
+    text-align: center;
+}

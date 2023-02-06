@@ -3,6 +3,7 @@ import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
 import '../Registration/style.css'
 import axios from 'axios'
+import AuthServices from '../../Services/AuthServices'
 
 function Login() {
 
@@ -18,55 +19,9 @@ function Login() {
         })
     }
 
-    const handleSubmit = async e => {
+    const handleSubmit = ( e) => {
+        AuthServices.login(user.email,user.password);
         e.preventDefault()
-
-        var data = JSON.stringify({
-            "email": user.email,
-            "password": user.password
-          });
-
-          var config = {
-            method: 'post',
-            url: 'http://localhost:8080/api/auth',
-            mode: "no-cors",
-            headers: { 
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin' : '*',
-              'Access-Control-Allow-Methods':'GET,PUT,POST,DELETE,PATCH,OPTIONS',
-            },
-            data : data
-          };
-
-          axios(config)
-          .then(function (response) {
-            console.log(JSON.stringify(response.data));
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
-
-        // var myHeaders = new Headers();
-        // myHeaders.append("Content-Type", "application/json");
-
-        // var raw = JSON.stringify({
-        //     "email": user.email,
-        //     "password": user.password
-        // });
-
-        // var requestOptions = {
-        //     method: 'POST',
-        //     headers: myHeaders,
-        //     body: raw,
-        //     mode: "no-cors",
-        //     //redirect: 'follow'
-        // };
-
-        // fetch("http://localhost:8080/api/auth", requestOptions)
-        //     .then(response => response.json())
-        //     .then(result => console.log(result))
-        //     .catch(error => console.log('error', error));
-
     }
 
     return (

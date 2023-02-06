@@ -19,13 +19,17 @@ import {
   Route,
   Link
 } from "react-router-dom"
+import { Button } from 'react-bootstrap';
+import { Modal } from 'bootstrap';
+
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: (
       <>
-      <Bbw></Bbw>
+      <Bbw ></Bbw>
       <Link to="/"></Link>
       </>
     )
@@ -109,7 +113,7 @@ const menuItems = [
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Nav items={menuItems}/>
+   
     <RouterProvider router={router}> </RouterProvider>
   </React.StrictMode>
 );
