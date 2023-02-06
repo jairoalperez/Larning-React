@@ -89,19 +89,14 @@ function Bbw(props) {
                 onHide={handleClose}
                 backdrop="static"
                 keyboard={false}
-            >
-                <Modal.Header closeButton>
-                    <Modal.Title>Login to the platform </Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <Login></Login>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        Close
-                    </Button>
-                    <Button variant="primary">Understood</Button>
-                </Modal.Footer>
+            >       
+         <Modal.Header closeButton>
+          
+        </Modal.Header>    
+                <Modal.Body >
+                   
+                <Login className="container border border-dark rounded p-5 bg-dark mt-5"></Login>
+                </Modal.Body>               
             </Modal>
         </>
            </>

@@ -8,20 +8,21 @@ import { Button } from 'react-bootstrap';
 function Nav(props) {
 
 
-    const [currentUser,setCurrentUser] = useState({});
+    const [currentUser,setCurrentUser] = useState(null);
 
    
 
-    useEffect (()=>{
-        const user = AuthServices.getCurrentUser();
-        if(!user){
-            
-        }else{
-            setCurrentUser(null)
-            // go to the profile  API of the user from the backend
-            // that we shall access and put the information in the currentUser state
-        }
-    },[currentUser])
+    // useEffect (()=>{
+    //     const user = AuthServices.getCurrentUser();
+    //     console.log("The User From Local Storage", user)
+    //     if(user==null){
+    //         setCurrentUser(null)
+    //     }else{
+    //         ///setCurrentUser(user)
+    //         // go to the profile  API of the user from the backend
+    //         // that we shall access and put the information in the currentUser state
+    //     }
+    // },[])
 
 
    

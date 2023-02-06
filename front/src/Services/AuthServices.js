@@ -1,9 +1,13 @@
+import { json } from "react-router-dom";
 
 const API_AUTH_URL="http://localhost:8080/apiauth/authenticate";
 
 class AuthService
 {
     login (username, password){
+
+      //localStorage.removeItem("user")
+
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
         
@@ -22,9 +26,27 @@ class AuthService
         fetch(API_AUTH_URL, requestOptions)
           .then(response => response.text())
           .then(result => {
-            localStorage.setItem("user", result)    
+
+            try {
+            const error =   JSON.parse(result ) 
+            localStorage.setItem("user", JSON.stringify({token: JSON.parse(result)}))
+              console.info("Try Part")
+            } catch (error) {
+              localStorage.setItem("user", JSON.stringify({token: result}))        
+              console.info("Error Part")
+            }
+
+           
         })
-          .catch(error => console.log('error', error));
+          .catch(error => {        
+             localStorage.setItem("user", JSON.stringify( 
+               { 
+                  state:true,
+                  msg:error
+                }
+             ))    
+            console.log('error', error)
+        });
     }
 
     logout(){
