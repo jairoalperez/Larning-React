@@ -10,15 +10,12 @@ import { json } from 'react-router-dom'
 function Login() {
     const [ authUser,setAuthUser] = useState({});
 
-    const [errState,setErrState]= useState({
+    const [loginResponse,setLoginResponse]= useState({
         state:false, 
         msg:""
 
     })
-    const [succState,setSuccState]= useState({
-        state:false, 
-        msg:""
-    })
+   
 
     const [user, setUser] = useState({
         email: '',
@@ -38,25 +35,30 @@ function Login() {
         try
         {
            // localStorage.removeItem("user")
-            AuthServices.login(user.email,user.password);
-            let userFromLocalStorage = JSON.parse( localStorage.getItem("user"));
-            console.log("THE USER",userFromLocalStorage, JSON.stringify(userFromLocalStorage))
-            userFromLocalStorage?.token?.errors?setErrState({
-                state:true,
-                msg:userFromLocalStorage.token.errors[0].details
-            }):
-            setErrState({
-                state:false,
-                msg:""
-            })
-            setSuccState({
-                state:true,
-                msg:"Yeah ! Logged in successfully"
-            })
+          const storageUser=  AuthServices.login(user.email,user.password);  // is it correct to get the user here 
+            //  const storageUser=JSON.parse( AuthServices.getCurrentUser());            
+             console.log("THE USER",storageUser)
+             if(storageUser){
+                setLoginResponse(storageUser)
+             }
+             console.log("THE State",loginResponse)
+
+            // userFromLocalStorage?.token?.errors?setErrState({
+            //     state:true,
+            //     msg:userFromLocalStorage.token.errors[0].details
+            // }):
+            // setErrState({
+            //     state:false,
+            //     msg:""
+            // })
+            // setSuccState({
+            //     state:true,
+            //     msg:"Yeah ! Logged in successfully"
+            // })
         }catch(errorMsg){
-            setErrState({
-                state:true,
-                msg:errorMsg
+            setLoginResponse({
+                status:"Fatal ! Need to cotact Admin",
+                response:errorMsg
             })
         }
         e.preventDefault()
@@ -65,25 +67,21 @@ function Login() {
     return (
         <div className=''>
 
-            {
-                errState?.state==true?
-                    <>
-                        <Alert id='error' variant="danger" onClose={() => setErrState(false)} dismissible>
-                            <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
-                                <p>{JSON.stringify( errState.msg)}</p>
-                        </Alert>
-                    </>
-                :
-                <>
-                    {
-                        succState?.state==true?<>
-                        <Alert id='success' variant="success" onClose={() => setSuccState(false)} dismissible>
-                            <Alert.Heading>Great! You Logged in Successfully!</Alert.Heading>
-                                <p>{JSON.stringify(succState.msg)}</p>
-                        </Alert>
-                        </>:<></>
-                    }
+            {loginResponse?.status == 'error' ?
+
+                <> <Alert id='error' variant="danger" dismissible>
+                    <Alert.Heading>Oh snap! You got an error!</Alert.Heading>
+                    <p>{loginResponse.response}</p>
+                </Alert>
                 </>
+                :
+                loginResponse?.status == 'success' ?
+                    <>
+                    <Alert id='success' variant="success" dismissible>
+                        <Alert.Heading>Great ! Good Job</Alert.Heading>
+                        <p>{loginResponse.response}</p>
+                    </Alert>
+                </>:<></>
             }
 
             <Form>

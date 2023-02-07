@@ -1,6 +1,6 @@
 import { json } from "react-router-dom";
 
-const API_AUTH_URL="http://localhost:8080/apiauth/authenticate";
+const API_AUTH_URL="http://localhost:8099/apiauth/authenticate";
 
 class AuthService
 {
@@ -24,29 +24,21 @@ class AuthService
         };
         
         fetch(API_AUTH_URL, requestOptions)
-          .then(response => response.text())
+          .then(response => response.json())
           .then(result => {
-
-            try {
-            const error =   JSON.parse(result ) 
-            localStorage.setItem("user", JSON.stringify({token: JSON.parse(result)}))
-              console.info("Try Part")
-            } catch (error) {
-              localStorage.setItem("user", JSON.stringify({token: result}))        
-              console.info("Error Part")
-            }
-
-           
+            localStorage.removeItem("user")
+            console.log("Old User Removed, Inside The Respnse before saving");
+            localStorage.setItem("user",JSON.stringify (result) )           ; 
+            console.log("New User added, Inside The Respnse after saving");   
+            return result
+        }) .catch(error => {        
+          localStorage.removeItem("user")
+          console.log("Old Error Removed, Inside The Catch before saving");
+          localStorage.setItem("user",JSON.stringify (error) )           ;    
+          console.log("New Error Added, Inside The Catch After saving");
+            return error
         })
-          .catch(error => {        
-             localStorage.setItem("user", JSON.stringify( 
-               { 
-                  state:true,
-                  msg:error
-                }
-             ))    
-            console.log('error', error)
-        });
+        
     }
 
     logout(){
@@ -54,11 +46,7 @@ class AuthService
     }
 // register
     getCurrentUser(){
-        const token=localStorage.getItem("user")
-        if(token){
-            return  {token : token}
-        }
-        return null
+        return localStorage.getItem("user")        
     }
 }
 
