@@ -31,12 +31,25 @@ function Login() {
         })
     }
     //{"token":"{\"status\":\"NOT_FOUND\",\"errors\":{\"timestamp\":\"2023-02-06T21:08:20.206+00:00\",\"message\":\"Requested user with email - admin.agsddsdencya@gmail.com does not exist.\",\"details\":\"Requested user with email - admin.agsddsdencya@gmail.com does not exist.\"}}"}
-    const handleSubmit = ( e) => {
+    
+    async function handleSubmit  ( e)  {
+        e.preventDefault()
         try
         {
+           // const storageUser=""
            // localStorage.removeItem("user")
-          const storageUser=  AuthServices.login(user.email,user.password);  // is it correct to get the user here 
-            //  const storageUser=JSON.parse( AuthServices.getCurrentUser());            
+         await AuthServices.login(user.email,user.password)
+         
+        //  response.then(response=>{
+        //     console.log ("Promise" ,response)
+        //     storageUser=response
+        //    })
+        //    .catch(err=>{
+        //     console.log("ERRO")
+        //    })
+           
+           // is it correct to get the user here 
+            const storageUser=JSON.parse( AuthServices.getCurrentUser());            
              console.log("THE USER",storageUser)
              if(storageUser){
                 setLoginResponse(storageUser)
@@ -61,7 +74,7 @@ function Login() {
                 response:errorMsg
             })
         }
-        e.preventDefault()
+        
     }
 
     return (
@@ -96,7 +109,7 @@ function Login() {
                 </Form.Group>
 
                 <div className='d-grid gap-2 mt-5'>
-                    <Button variant="secondary" type="submit" onClick={handleSubmit}>
+                    <Button variant="secondary" type="submit" onClick={(e)=>handleSubmit(e)}>
                         Submit
                     </Button>
                 </div>

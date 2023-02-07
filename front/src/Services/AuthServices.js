@@ -4,7 +4,7 @@ const API_AUTH_URL="http://localhost:8099/apiauth/authenticate";
 
 class AuthService
 {
-    login (username, password){
+   async login (username, password){
 
       //localStorage.removeItem("user")
 
@@ -23,7 +23,7 @@ class AuthService
           redirect: 'follow'
         };
         
-        fetch(API_AUTH_URL, requestOptions)
+        await fetch(API_AUTH_URL, requestOptions)
           .then(response => response.json())
           .then(result => {
             localStorage.removeItem("user")
