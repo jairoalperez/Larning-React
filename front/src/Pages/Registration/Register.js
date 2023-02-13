@@ -37,7 +37,7 @@ function Register() {
 
             var config = {
                 method: 'post',
-                url: 'http://localhost:8081/api/v1/user/signup',
+                url: 'http://localhost:8077/api/v1/user/signup',
                 headers: {
                     'Content-Type': 'application/json'
                 },
